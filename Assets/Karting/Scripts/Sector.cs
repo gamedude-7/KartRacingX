@@ -6,6 +6,7 @@ public class Sector : MonoBehaviour
 {
     Mesh mesh;
     Vector3[] vertices;
+    
     public Vector3[] corners;
     //public Bounds bounds;
     // Start is called before the first frame update
@@ -21,27 +22,37 @@ public class Sector : MonoBehaviour
         //corners[j] = Vector3.up;
         //corners[j] = vertices[0];
         float min_y = minY(vertices);
+        //Debug.Log("name: " + this.name);
+        //Debug.Log("# of vertices: " + vertices.Length);
+        //Debug.Log("Parent: " + this.transform.parent.name);
         for (var i = 0; i < vertices.Length; i++)
         {
             found = false;
             //if (vertices[i].y < 0)
             if (vertices[i].y < (min_y + 0.01f) && vertices[i].y > (min_y - 0.01f))
             {
+                // Debug.Log("vertex " + i + ": " + vertices[i]);
+
+
                 for (int a = 0; a < n; a++)
-                {                    
-                    if (vertices[i]==corners[a])    
+                {
+                    if (vertices[i] == corners[a])
                     {
                         found = true;
                     }
                 }
                 if (!found)
                 {
-                    corners[j] = vertices[i];                     
+                    corners[j] = vertices[i];
+                    //Debug.Log("corner " + j + ": " + corners[j]);
+                    corners[j] = vertices[i];
+
                     j++;
                     n++;
                 }
             }
         }
+        //Debug.Log("corners: " + corners);
     }
 
     float minY(Vector3[] vertices)
