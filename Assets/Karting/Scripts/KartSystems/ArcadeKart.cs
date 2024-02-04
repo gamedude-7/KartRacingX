@@ -9,6 +9,7 @@ namespace KartGame.KartSystems
     public class ArcadeKart : MonoBehaviour
     {
         public Text speedText;
+        public Sector pSector;
 
         [System.Serializable]
         public class StatPowerup

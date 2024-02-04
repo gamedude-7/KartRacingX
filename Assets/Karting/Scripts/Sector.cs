@@ -6,14 +6,15 @@ public class Sector : MonoBehaviour
 {
     Mesh mesh;
     Vector3[] vertices;
-    
+    Vector3[] normals = new Vector3[4];
+    float sectorDist;
+    float totalPriorDist;
     public Vector3[] corners;
     //public Bounds bounds;
     // Start is called before the first frame update
     void Start()
     {        
-        mesh = GetComponent<MeshFilter>().mesh;
-        
+        mesh = GetComponent<MeshFilter>().mesh;        
         vertices = mesh.vertices;
         int j = 0; int n = 0;
         corners = new Vector3[4];
