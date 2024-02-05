@@ -86,26 +86,16 @@ ScriptsOnlyBuild:
     Unity.RenderPipelines.Universal.Runtime.dll:
     - UnityEngine.Rendering.Universal.Bloom
     - UnityEngine.Rendering.Universal.ChannelMixer
-    - UnityEngine.Rendering.Universal.ChromaticAberration
     - UnityEngine.Rendering.Universal.ColorAdjustments
     - UnityEngine.Rendering.Universal.ColorCurves
-    - UnityEngine.Rendering.Universal.ColorLookup
-    - UnityEngine.Rendering.Universal.DepthOfField
-    - UnityEngine.Rendering.Universal.FilmGrain
-    - UnityEngine.Rendering.Universal.LensDistortion
     - UnityEngine.Rendering.Universal.LiftGammaGain
-    - UnityEngine.Rendering.Universal.MotionBlur
-    - UnityEngine.Rendering.Universal.PaniniProjection
     - UnityEngine.Rendering.Universal.PostProcessData
-    - UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights
-    - UnityEngine.Rendering.Universal.SplitToning
     - UnityEngine.Rendering.Universal.Tonemapping
     - UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
     - UnityEngine.Rendering.Universal.UniversalAdditionalLightData
     - UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset
     - UnityEngine.Rendering.Universal.UniversalRenderPipelineGlobalSettings
     - UnityEngine.Rendering.Universal.UniversalRendererData
-    - UnityEngine.Rendering.Universal.Vignette
     - UnityEngine.Rendering.Universal.WhiteBalance
     - UnityEngine.Rendering.Universal.XRSystemData
     Unity.Rider.Editor.dll:
@@ -481,9 +471,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1792}
+      Script: {instanceID: 1790}
     - Class: 114
-      Script: {instanceID: 1796}
+      Script: {instanceID: 1798}
     - Class: 114
       Script: {instanceID: 1846}
     - Class: 114
@@ -779,9 +769,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1792}
+      Script: {instanceID: 1790}
     - Class: 114
-      Script: {instanceID: 1796}
+      Script: {instanceID: 1798}
     - Class: 114
       Script: {instanceID: 1846}
     - Class: 114
@@ -821,16 +811,22 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
   - hash:
       serializedVersion: 2
       Hash: 699619b86d9359741a4f58540298c80b
@@ -843,12 +839,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 040dd48e3a027d5424519a5fa2009df4
@@ -2871,4 +2861,4 @@ ScriptsOnlyBuild:
   - Assets/Karting/Scenes/MainScene.unity
   - Assets/Karting/Scenes/LoseScene.unity
   - Assets/Karting/Scenes/WinScene.unity
-  playerPath: C:/Users/Jason/KartRacingX/Game/KartRacing.exe
+  playerPath: C:/Users/Jason/KartRacingX/KartRacing.exe
