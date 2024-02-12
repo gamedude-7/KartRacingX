@@ -10,6 +10,7 @@ namespace KartGame.KartSystems
     {
         public Text speedText;
         public Sector pSector;
+        public Transform ovalTrack;
 
         [System.Serializable]
         public class StatPowerup
@@ -290,17 +291,67 @@ namespace KartGame.KartSystems
 
         void Update()
         {
-            Debug.Log("Begin Update");
+            //Debug.Log("Begin Update");
             Debug.DrawRay(transform.position, Rigidbody.velocity, Color.green);
-            Debug.Log("A");
+           
             int speed = (int)Rigidbody.velocity.magnitude;
-            Debug.Log("speed: " + speed);            
+            //Debug.Log("speed: " + speed);            
             speedText.text = speed.ToString() + "m/s";
-            Debug.Log("End Update");
+            //Debug.Log("End Update");
+
+            foreach (Transform child in ovalTrack)
+            {
+                //Debug.Log("name: " + transform.name + " pos: " + transform.position);
+                foreach (Transform modularTrack in child)
+                {
+
+                    if (modularTrack.name.StartsWith("Sector"))
+                    {
+                        Sector sector = (Sector)modularTrack.GetComponent("Sector");
+                        Vector3[] normals = new Vector3[4];
+                        Vector3[] v = new Vector3[4];
+                        //Debug.Log("name: " + sector.name);
+                        //Debug.Log("corners " + sector.corners.Length);
+
+                        for (int i = 0; i < sector.corners.Length; i++)
+                        {
+                            // Debug.Log("corners[" + i + "] = " + sector.corners[i]);
+                            //    Debug.DrawLine(sector.corners[0], sector.corners[1]);
+                            //Debug.DrawLine(sector.corners[0], sector.corners[2]);
+                            //Debug.DrawLine(sector.corners[1], sector.corners[3]);
+                            //Debug.DrawLine(sector.corners[2], sector.corners[3]);
+                            if (i != 23)
+                            {
+                                Debug.DrawLine(sector.corners[i], sector.corners[i + 1]);
+                              //  normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[i + 1], ref v[i]);
+                            }
+                           // else
+                           // {
+                           //     Debug.DrawLine(sector.corners[i], sector.corners[0]);
+                           ////     normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[0], ref v[i]);
+                           // }
+                        }
+                    }
+                    //Sector sector = child.FindChild("Sector");
+                    //child.FindChild("Sector");
+                    //Something(child.gameObject);
+                }
+            }
         }
+
+        Vector3 normalOfOneFace(Vector3 point, Vector3 cornerA, Vector3 cornerB, ref Vector3 v)
+        {
+            Vector3 b = point - cornerA;
+            Vector3 a = cornerB - cornerA;
+            a = a.normalized;
+            Vector3 projOfBonA = Vector3.Project(b, a); // vector to the point on the line directly under point
+            Vector3 normal = point - projOfBonA;
+            return normal;
+        }
+
         void FixedUpdate()
         {
-            Debug.Log("Begin FixedUpdate");
+            //Debug.Log("Begin FixedUpdate");
             UpdateSuspensionParams(FrontLeftWheel);
             UpdateSuspensionParams(FrontRightWheel);
             UpdateSuspensionParams(RearLeftWheel);
@@ -363,11 +414,11 @@ namespace KartGame.KartSystems
                 Renderer rend = m_VisualWheels[3].GetComponent<Renderer>();
                 rend.material.shader = Shader.Find("NewSurfaceShader");
             }
-            Debug.Log("C");
+    
             // calculate how grounded and airborne we are
             GroundPercent = (float)groundedCount / 4.0f;
             AirPercent = 1 - GroundPercent;
-            Debug.Log("D");
+ 
             // apply vehicle physics
             if (m_CanMove)
             {
@@ -379,18 +430,18 @@ namespace KartGame.KartSystems
                 //MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
                 //MoveVehicle(UnityEngine.Input.GetAxis("Accelerate"), Input.Brake, Input.TurnInput);
             }
-            Debug.Log("E");
+   
             GroundAirbourne();
-            Debug.Log("F");
+            
             m_PreviousGroundPercent = GroundPercent;
 
             UpdateDriftVFXOrientation();
-            Debug.Log("End FixedUpdate");
+           // Debug.Log("End FixedUpdate");
         }
 
         void GatherInputs()
         {
-            Debug.Log("Begin Gather Inputs");
+            //Debug.Log("Begin Gather Inputs");
             // reset input
             Input = new InputData();
             WantsToDrift = false;
@@ -401,7 +452,7 @@ namespace KartGame.KartSystems
                 Input = m_Inputs[i].GenerateInput();
                 WantsToDrift = Input.Brake && Vector3.Dot(Rigidbody.velocity, transform.forward) > 0.0f;
             }
-            Debug.Log("End Gather Inputs");
+          //  Debug.Log("End Gather Inputs");
         }
 
         void TickPowerups()
@@ -507,17 +558,17 @@ namespace KartGame.KartSystems
             //m_FinalStats = baseStats;
             
             // use the max speed for the direction we are going--forward or reverse.
-            Debug.Log("localVelDirectionIsFwd: " + localVelDirectionIsFwd);
-            Debug.Log("m_FinalStats.TopSpeed: " + m_FinalStats.TopSpeed);
+            //Debug.Log("localVelDirectionIsFwd: " + localVelDirectionIsFwd);
+            //Debug.Log("m_FinalStats.TopSpeed: " + m_FinalStats.TopSpeed);
             float maxSpeed = localVelDirectionIsFwd ? m_FinalStats.TopSpeed : m_FinalStats.ReverseSpeed;
             float accelPower = accelDirectionIsFwd ? m_FinalStats.Acceleration : m_FinalStats.ReverseAcceleration;
 
-            Debug.Log("maxSpeed: " + maxSpeed);
+            //Debug.Log("maxSpeed: " + maxSpeed);
             float currentSpeed = Rigidbody.velocity.magnitude;
             float accelRampT = currentSpeed / maxSpeed;
             float multipliedAccelerationCurve = m_FinalStats.AccelerationCurve * accelerationCurveCoeff;
-            Debug.Log("multipliedAccelerationCurve: " + multipliedAccelerationCurve);
-            Debug.Log("accelRampT: " + accelRampT);
+            //Debug.Log("multipliedAccelerationCurve: " + multipliedAccelerationCurve);
+            //Debug.Log("accelRampT: " + accelRampT);
             
             float accelRamp = Mathf.Lerp(multipliedAccelerationCurve, 1, accelRampT * accelRampT);
 
@@ -526,17 +577,17 @@ namespace KartGame.KartSystems
             // if we are braking (moving reverse to where we are going)
             // use the braking accleration instead
             float finalAccelPower = isBraking ? m_FinalStats.Braking : accelPower;
-            Debug.Log("finalAccelPower: " + finalAccelPower);
-            Debug.Log("accelRamp: " + accelRamp);
+            //Debug.Log("finalAccelPower: " + finalAccelPower);
+            //Debug.Log("accelRamp: " + accelRamp);
             float finalAcceleration = finalAccelPower * accelRamp;
 
             // apply inputs to forward/backward
             float turningPower = IsDrifting ? m_DriftTurningPower : turnInput * m_FinalStats.Steer;
-
+            //Debug.Log("turnInput: " + turnInput);
             Quaternion turnAngle = Quaternion.AngleAxis(turningPower, transform.up);
             Vector3 fwd = turnAngle * transform.forward;
-            Debug.Log("fwd: " + fwd);
-            Debug.Log("final acceleration: " + finalAcceleration);
+            //Debug.Log("fwd: " + fwd);
+            //Debug.Log("final acceleration: " + finalAcceleration);
 
             Vector3 movement = fwd * accelInput * finalAcceleration * ((m_HasCollision || GroundPercent > 0.0f) ? 1.0f : 0.0f);
 
@@ -547,8 +598,8 @@ namespace KartGame.KartSystems
             if (wasOverMaxSpeed && !isBraking)
                 movement *= 0.0f;
 
-            Debug.Log("rigid vel: " + Rigidbody.velocity);
-            Debug.Log("movement: " + movement);
+            //Debug.Log("rigid vel: " + Rigidbody.velocity);
+            //Debug.Log("movement: " + movement);
             Vector3 newVelocity = Rigidbody.velocity + movement * Time.fixedDeltaTime;
             newVelocity.y = Rigidbody.velocity.y;
 
@@ -557,16 +608,16 @@ namespace KartGame.KartSystems
             {
                 newVelocity = Vector3.ClampMagnitude(newVelocity, maxSpeed);
             }
-            Debug.Log("accelInput: " + accelInput);
+            //Debug.Log("accelInput: " + accelInput);
             // coasting is when we aren't touching accelerate
             if (Mathf.Abs(accelInput) < k_NullInput && GroundPercent > 0.0f)
             {
                 newVelocity = Vector3.MoveTowards(newVelocity, new Vector3(0, Rigidbody.velocity.y, 0), Time.fixedDeltaTime * m_FinalStats.CoastingDrag);
             }
 
-            Debug.Log("1");
+          
             Rigidbody.velocity = newVelocity;
-            Debug.Log("2");
+
             // Drift
             if (GroundPercent > 0.0f)
             {
