@@ -295,7 +295,7 @@ Transform:
   - {fileID: 638981063}
   - {fileID: 101095727}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &23284000
 MonoBehaviour:
@@ -496,7 +496,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!64 &49825907
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -523,7 +536,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &62682349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -615,7 +641,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1 &73989386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7798798855868598946, guid: 19954de30401f73428254541a9ad156e,
@@ -1852,7 +1891,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &225879714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2127,7 +2179,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 2000
   Mode: 0
   InitCheckpointIndex: 0
   Mask:
@@ -2214,8 +2266,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedText: {fileID: 708832379}
-  pSector: {fileID: 0}
+  pSector: {fileID: 1179705197}
   ovalTrack: {fileID: 822690626}
+  arcadeKart: {fileID: 1910917301}
+  currentSector: 0
   baseStats:
     TopSpeed: 10
     Acceleration: 5
@@ -2824,7 +2878,7 @@ PrefabInstance:
     - target: {fileID: 3761431495673512401, guid: 6d9796d84c9e5a54fb4e014484945a46,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3761431495673512401, guid: 6d9796d84c9e5a54fb4e014484945a46,
         type: 3}
@@ -3315,7 +3369,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &309236780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3504,7 +3571,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &335966567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5495,7 +5575,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &514914688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5934,7 +6027,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &545310876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9f1e50f73a529a448b004add5bec5d80,
@@ -6805,7 +6911,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!146 &676395706 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 4810912519336000188, guid: 19954de30401f73428254541a9ad156e,
@@ -6944,7 +7063,7 @@ PrefabInstance:
     - target: {fileID: 1315839542190839937, guid: b26c4a65cf4c6475a92bfd03c2c3282b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1315839542190839937, guid: b26c4a65cf4c6475a92bfd03c2c3282b,
         type: 3}
@@ -7037,7 +7156,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &708546276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8214,7 +8346,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1 &807038589
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,7 +8648,7 @@ Transform:
   - {fileID: 1552847275}
   - {fileID: 1991394848}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &826804888
 PrefabInstance:
@@ -8698,7 +8843,7 @@ PrefabInstance:
     - target: {fileID: 6691645748356329553, guid: 4366ba6a4d5213d4f9fc7bba3e778799,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.98891
+      value: 16.558908
       objectReference: {fileID: 0}
     - target: {fileID: 6691645748356329553, guid: 4366ba6a4d5213d4f9fc7bba3e778799,
         type: 3}
@@ -8770,7 +8915,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
+--- !u!64 &875455702
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875455696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7732428229976693372, guid: 78ce05eb419d24d44b7b2ee919777b00, type: 3}
 --- !u!4 &891323378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 40299501215355906, guid: 230dd9257fca2c249b555f6edd3c8e14,
@@ -9193,7 +9365,7 @@ Transform:
   - {fileID: 1212969535}
   - {fileID: 1016630478}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -180.00099, z: 0}
 --- !u!4 &925689491 stripped
 Transform:
@@ -9219,7 +9391,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &943674754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9399,7 +9584,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &972888047
 PrefabInstance:
@@ -9490,7 +9675,7 @@ PrefabInstance:
     - target: {fileID: 3761431495673512401, guid: 6d9796d84c9e5a54fb4e014484945a46,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3761431495673512401, guid: 6d9796d84c9e5a54fb4e014484945a46,
         type: 3}
@@ -9729,12 +9914,12 @@ PrefabInstance:
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.92
+      value: 13.49
       objectReference: {fileID: 0}
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
@@ -10348,7 +10533,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1045649162 stripped
 Transform:
@@ -10570,7 +10755,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &1077540087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 667086550830086704, guid: 3796997fde0c29b4180a4ec756403b34,
@@ -10601,7 +10799,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1118694668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10956,7 +11167,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1170209342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11151,7 +11375,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1176067597
 MonoBehaviour:
@@ -11188,7 +11412,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!65 &1179705201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11823,12 +12060,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207105314}
   m_LocalRotation: {x: 0.09761158, y: 1e-45, z: 0, w: 0.9952246}
-  m_LocalPosition: {x: 15.98891, y: 3.250001, z: -2.8944764}
+  m_LocalPosition: {x: 16.558908, y: 3.250001, z: -2.8944764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 4.38, y: 0, z: 0}
 --- !u!114 &1207105320
 MonoBehaviour:
@@ -12071,7 +12308,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1264903745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12611,6 +12861,26 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f786667994ad4fee8c70a586ff5fb08, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f1e50f73a529a448b004add5bec5d80, type: 3}
+--- !u!1 &1287058829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7827240154217999367, guid: 31f5e02b427eea448afd27cc72647efa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1493085786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1287058833
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287058829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7673611256805399674, guid: 31f5e02b427eea448afd27cc72647efa, type: 3}
 --- !u!1001 &1288142032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12802,7 +13072,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.998606
+      value: -25.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -12812,27 +13082,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.238047
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -12842,7 +13112,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -12867,17 +13137,17 @@ PrefabInstance:
     - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.026453018
+      value: -0.5278492
       objectReference: {fileID: 0}
     - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.009950519
+      value: 0.009951234
       objectReference: {fileID: 0}
     - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.52740717
+      value: -0.21064234
       objectReference: {fileID: 0}
     - target: {fileID: 5835175974908901592, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -12947,12 +13217,12 @@ PrefabInstance:
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.98891
+      value: 16.558908
       objectReference: {fileID: 0}
     - target: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
@@ -14227,7 +14497,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1374517811
 PrefabInstance:
@@ -14908,6 +15178,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ModulTrackLargeStraight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.022076607
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000320673
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646382538075361796, guid: 28e0adeacd4f3014cabdc6a898e4c199,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.081762314
+      objectReference: {fileID: 0}
     - target: {fileID: 5835175974908901592, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_Enabled
@@ -14953,7 +15238,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1419231052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15217,6 +15515,100 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1485692694}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1493085786
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8769930921670771546, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: -8744734166937324331, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.92
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4440766332456249082, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_Name
+      value: ModularTrackCurveLargeLeft_Edited
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746443331256054284, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083331096364310090, guid: 31f5e02b427eea448afd27cc72647efa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31f5e02b427eea448afd27cc72647efa, type: 3}
 --- !u!1001 &1494293230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15371,7 +15763,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!64 &1494293235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15696,7 +16101,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &1555499288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: dca6189290e8c16479a364fa6d80b6b8,
@@ -16988,7 +17406,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1650421504 stripped
 Transform:
@@ -17034,7 +17452,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1670235909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17270,7 +17701,7 @@ AudioSource:
   m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -17364,7 +17795,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691799235 stripped
 GameObject:
@@ -18393,7 +18824,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1785482982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18859,7 +19303,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1855425487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19400,7 +19857,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1001 &1914632289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19421,12 +19891,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.022651702
+      value: -0.022651773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.1206403
+      value: 7.1206393
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -19436,17 +19906,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
         type: 3}
@@ -20409,7 +20879,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!1 &2042626217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1319951877929693848, guid: 28e0adeacd4f3014cabdc6a898e4c199,
@@ -20428,7 +20911,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &2046379624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 40299501215355906, guid: 230dd9257fca2c249b555f6edd3c8e14,
@@ -20459,7 +20955,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &2068314953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28e0adeacd4f3014cabdc6a898e4c199,
@@ -21163,7 +21672,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7355117364bf248aeff11dde4a53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normals: []
   corners: []
+  backLeftCorner: {x: 0, y: 0, z: 0}
+  backRightCorner: {x: 0, y: 0, z: 0}
+  frontLeftCorner: {x: 0, y: 0, z: 0}
+  frontRightCorner: {x: 0, y: 0, z: 0}
+  leftEdge: {x: 0, y: 0, z: 0}
+  rightEdge: {x: 0, y: 0, z: 0}
+  trailEdge: {x: 0, y: 0, z: 0}
+  leadEdge: {x: 0, y: 0, z: 0}
+  normOfLeftEdge: {x: 0, y: 0, z: 0}
+  normOfRightEdge: {x: 0, y: 0, z: 0}
+  normOfTrailEdge: {x: 0, y: 0, z: 0}
+  normOfLeadEdge: {x: 0, y: 0, z: 0}
 --- !u!4 &2142695954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 40299501215355906, guid: 230dd9257fca2c249b555f6edd3c8e14,

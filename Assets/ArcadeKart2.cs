@@ -11,6 +11,8 @@ namespace KartGame.KartSystems
         public Text speedText;
         public Sector pSector;
         public Transform ovalTrack;
+        public ArcadeKart arcadeKart;
+        public string currentSector;
 
         [System.Serializable]
         public class StatPowerup
@@ -292,51 +294,317 @@ namespace KartGame.KartSystems
         void Update()
         {
             //Debug.Log("Begin Update");
-            Debug.DrawRay(transform.position, Rigidbody.velocity, Color.green);
+          //  Debug.DrawRay(transform.position, Rigidbody.velocity, Color.green);
            
             int speed = (int)Rigidbody.velocity.magnitude;
             //Debug.Log("speed: " + speed);            
             speedText.text = speed.ToString() + "m/s";
             //Debug.Log("End Update");
-
+            
             foreach (Transform child in ovalTrack)
             {
                 //Debug.Log("name: " + transform.name + " pos: " + transform.position);
                 foreach (Transform modularTrack in child)
                 {
-
+                    Vector3 a, b, c, d;
+                    Vector3 trailEdge, leadEdge;
                     if (modularTrack.name.StartsWith("Sector"))
                     {
                         Sector sector = (Sector)modularTrack.GetComponent("Sector");
-                        Vector3[] normals = new Vector3[4];
-                        Vector3[] v = new Vector3[4];
+                        //Vector3[] normals = new Vector3[24];
+                        //Vector3[] v = new Vector3[24];
                         //Debug.Log("name: " + sector.name);
                         //Debug.Log("corners " + sector.corners.Length);
+                       
+                        for (int i = 0; i < sector.corners.Length-1; i++)
+                        { 
+                           
+                          //  Debug.Log("corners[" + i + "] = " + sector.corners[i]);
+                            
+                            switch (i)
+                            {
+                                //case 13:
+                                //    Debug.DrawLine(sector.corners[i], sector.corners[i + 1], Color.green);
+                                //    break;
+                                //case 4:
+                                //    Debug.DrawLine(sector.corners[i], sector.corners[i + 1], Color.green);
+                                //    break;
+                                //case 5:
+                                //    Debug.DrawLine(sector.corners[i], sector.corners[i + 1], Color.green);
+                                 //   break;
+                                //case 12:
+                                //    Debug.DrawLine(sector.corners[i], sector.corners[i + 1], Color.green);
+                                //    break;
+                                default:
+                                   // Debug.DrawLine(sector.corners[i], sector.corners[i + 1], Color.blue);
+                                    break;
 
-                        for (int i = 0; i < sector.corners.Length; i++)
-                        {
-                            // Debug.Log("corners[" + i + "] = " + sector.corners[i]);
+                            }
+                            
+                            //Vector3 midVector = (sector.corners[i + 1] - sector.corners[i]);
+                            //float halfLength = midVector.magnitude / 2;
+                            //midVector = sector.corners[i] + halfLength * midVector.normalized;
+
+
+                            //normals[i] = Vector3.Cross(sector.corners[i], sector.corners[i + 1]).normalized;
+
+                            //Debug.DrawLine(midVector, midVector + normals[i], Color.red);
+
+
                             //    Debug.DrawLine(sector.corners[0], sector.corners[1]);
                             //Debug.DrawLine(sector.corners[0], sector.corners[2]);
                             //Debug.DrawLine(sector.corners[1], sector.corners[3]);
                             //Debug.DrawLine(sector.corners[2], sector.corners[3]);
-                            if (i != 23)
-                            {
-                                Debug.DrawLine(sector.corners[i], sector.corners[i + 1]);
-                              //  normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[i + 1], ref v[i]);
-                            }
-                           // else
-                           // {
-                           //     Debug.DrawLine(sector.corners[i], sector.corners[0]);
-                           ////     normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[0], ref v[i]);
-                           // }
+                            //if (i != 23)
+                            //{
+
+                            //normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[i + 1], ref v[i]);
+
+
+                            //  }
+                            // else
+                            // {
+                            //     Debug.DrawLine(sector.corners[i], sector.corners[0]);
+                            ////     normals[i] = normalOfOneFace(sector.transform.position, sector.corners[i], sector.corners[0], ref v[i]);
+                            // }
                         }
+
+                        Vector3 midVector = (sector.corners[4 + 1] - sector.corners[4]);
+                        float halfLength = midVector.magnitude / 2;
+                        midVector = sector.corners[4] + halfLength * midVector.normalized;
+
+                        // trailing corners
+                        a = sector.corners[6] - sector.corners[5];
+                        b = sector.corners[5] - sector.corners[4];
+                        trailEdge = b;
+                        // leading edge corners
+                        c = sector.corners[13] - sector.corners[12];
+                        d = sector.corners[14] - sector.corners[13];
+                        leadEdge = d;
+
+                        Vector3 normalOfTrailingEdge = Vector3.Cross(a, b).normalized;
+                        Vector3 normalOfLeadingEdge = Vector3.Cross(d, c).normalized;
+                        Vector3 normOfLeftEdge, normOfRightEdge;
+                        
+                        Vector3 pointOfInterest = this.transform.position;
+                        Vector3 pointOnTrailingEdge = sector.corners[5];
+                        Vector3 pointOnLeadingEdge = sector.corners[13];
+                        Vector3 leadingEdgeToPt = pointOfInterest - pointOnLeadingEdge;
+                        Vector3 trailingEdgeToPt = pointOfInterest - pointOnTrailingEdge;
+
+                        Vector3 pointOnLeftEdgeToKart = pointOfInterest - sector.corners[5];
+                        Vector3 pointOnRightEdgeToKart = pointOfInterest - sector.corners[13];
+
+                        //Debug.DrawLine(sector.corners[5], sector.corners[9], Color.cyan);
+                       // Debug.DrawLine(sector.corners[13], sector.corners[16], Color.cyan);
+                        Vector3 leftEdge = sector.corners[5] - sector.corners[9];
+                        Vector3 rightEdge = sector.corners[13] - sector.corners[16];
+                        //Debug.DrawLine(sector.corners[4] , midVector, Color.yellow);
+                        //Debug.DrawLine(midVector, midVector + normalOfLeadingEdge, Color.red);
+
+                        //if (modularTrack.name == "Sector14")
+                        //{
+                        //Debug.DrawLine(sector.corners[5], pointOfInterest, Color.white);
+                        Vector3 projOnLeftEdge = Vector3.Project(pointOnLeftEdgeToKart, leftEdge);
+
+                        
+                        if (modularTrack.name == "Sector4")
+                            normOfLeftEdge = -sector.transform.right;
+                        else
+                            normOfLeftEdge = sector.transform.right;//pointOfInterest - (sector.corners[5] + projOnLeftEdge);
+                        normOfLeftEdge = normOfLeftEdge.normalized;
+                        
+
+                        // Debug.DrawLine(sector.corners[13], pointOfInterest, Color.white);
+                        Vector3 projOnRightEdge = Vector3.Project(pointOnRightEdgeToKart, rightEdge);
+
+                        if (modularTrack.name == "Sector4")
+                            normOfRightEdge = sector.transform.right;//pointOfInterest - (sector.corners[13] + projOnRightEdge);
+                        else
+                            normOfRightEdge = -sector.transform.right;
+                        normOfRightEdge = normOfRightEdge.normalized;
+                       
+
+                            
+                        leftEdge = sector.corners[9] - sector.corners[5];
+                        rightEdge = sector.corners[16] - sector.corners[13];
+                        trailEdge = sector.corners[4] - sector.corners[5];
+                        if (modularTrack.name == "Sector4" || modularTrack.name == "Sector8" || modularTrack.name == "Sector18" || modularTrack.name == "Sector22")
+                        {
+                            //Debug.DrawLine(sector.corners[5] + projOnLeftEdge, sector.corners[5] + projOnLeftEdge + normOfLeftEdge, Color.white);
+                            //Debug.DrawLine(sector.corners[5], sector.corners[5] + pointOnLeftEdgeToKart, Color.white);
+                            //Debug.DrawLine(sector.corners[5], sector.corners[5] + projOnLeftEdge, Color.white);
+
+                            //Debug.DrawLine(sector.corners[13], sector.corners[13] + projOnRightEdge, Color.green);
+                            //Debug.DrawLine(sector.corners[13] + projOnRightEdge, sector.corners[13] + projOnRightEdge + normOfRightEdge, Color.green);
+                            //Debug.DrawLine(sector.corners[13], sector.corners[13] + pointOnRightEdgeToKart, Color.green);
+                            //Debug.DrawLine(sector.corners[16], sector.corners[16] + Vector3.up,Color.black);
+                            sector.backLeftCorner = sector.corners[5];
+                            sector.backRightCorner = sector.corners[14];
+                            sector.frontLeftCorner = sector.corners[9];
+                            sector.frontRightCorner = sector.corners[16];
+
+                            //Debug.DrawLine(sector.frontLeftCorner, sector.frontLeftCorner + Vector3.up);
+                            //sector.setEdgeNorms();
+
+                            //pointOnLeadingEdge = sector.corners[5];
+                            //Vector3 leadingEdge = sector.corners[14] - sector.corners[5];
+                            //Vector3 halfLeadingEdge = leadingEdge / 2.0f;
+                            //Debug.DrawLine(sector.corners[5], sector.corners[5] + halfLeadingEdge, Color.green);
+                            //normalOfLeadingEdge = (Quaternion.AngleAxis(-90, Vector3.up) * halfLeadingEdge).normalized;
+                            //Debug.DrawLine(sector.corners[5] + halfLeadingEdge, sector.corners[5] + halfLeadingEdge + normalOfLeadingEdge, Color.green);
+                            //normalOfTrailingEdge = -normalOfTrailingEdge;
+                            //// Debug.DrawLine(pointOnLeadingEdge, transform.position, Color.green);
+                            //leadingEdgeToPt = transform.position - pointOnLeadingEdge;
+                            //Debug.DrawLine(pointOnLeadingEdge, pointOnLeadingEdge + leadingEdgeToPt, Color.green);
+
+                            //pointOnTrailingEdge = sector.corners[9];
+                            //Vector3 trailingEdge = sector.corners[16] - sector.corners[9];
+                            ////Debug.DrawLine(sector.corners[9], sector.corners[16], Color.blue);
+                            //Vector3 halfTrailingingEdge = trailingEdge / 2.0f;
+                            //Debug.DrawLine(sector.corners[9], sector.corners[9] + halfTrailingingEdge, Color.blue);
+                            //normalOfTrailingEdge = (Quaternion.AngleAxis(90, Vector3.up) * halfTrailingingEdge).normalized;
+                            //Debug.DrawLine(sector.corners[9] + halfTrailingingEdge, sector.corners[9] + halfTrailingingEdge + normalOfTrailingEdge, Color.blue);
+                            //trailingEdgeToPt = transform.position - pointOnTrailingEdge;
+                            //Debug.DrawLine(pointOnTrailingEdge, pointOnTrailingEdge + trailingEdgeToPt, Color.blue);
+
+                            //Vector3 pointOnLeftEdge = sector.corners[5];
+                            ////Debug.DrawLine(pointOnLeftEdge, sector.corners[9], Color.red);
+                            //Vector3 halfLeftEdge = leftEdge / 2.0f;
+                            //Debug.DrawLine(pointOnLeftEdge, pointOnLeftEdge + halfLeftEdge, Color.red);
+                            //normOfLeftEdge = (Quaternion.AngleAxis(90, Vector3.up) * halfLeftEdge).normalized;
+                            //Debug.DrawLine(pointOnLeftEdge + halfLeftEdge, pointOnLeftEdge + halfLeftEdge + normOfLeftEdge, Color.red);
+                            //pointOnLeftEdgeToKart = transform.position - pointOnLeftEdge;
+                            //Debug.DrawLine(pointOnLeftEdge, pointOnLeftEdge + pointOnLeftEdgeToKart, Color.red);
+
+                            //Vector3 pointOnRightEdge = sector.corners[14];
+                            ////Debug.DrawLine(pointOnRightEdge, sector.corners[16], Color.yellow);
+                            //rightEdge = sector.corners[16] - pointOnRightEdge;
+                            //Vector3 halfRightEdge = rightEdge / 2.0f;
+                            //Debug.DrawLine(pointOnRightEdge, pointOnRightEdge + halfRightEdge, Color.yellow);
+                            //normOfRightEdge = (Quaternion.AngleAxis(-90, Vector3.up) * halfRightEdge).normalized;
+                            //Debug.DrawLine(pointOnRightEdge + halfRightEdge, pointOnRightEdge + halfRightEdge + normOfRightEdge, Color.yellow);
+                            //pointOnRightEdgeToKart = transform.position - pointOnRightEdge;
+                            //Debug.DrawLine(pointOnRightEdge, pointOnRightEdge + pointOnRightEdgeToKart, Color.yellow);
+
+                            //normalOfTrailingEdge = -normalOfTrailingEdge;
+                            //if (Vector3.Dot(pointOnRightEdgeToKart, normOfRightEdge) > 0)
+                            //    Debug.Log("Positive side on right edge");
+                            //if (Vector3.Dot(pointOnLeftEdgeToKart, normOfLeftEdge) > 0)
+                            //    Debug.Log("Positive side on left edge");
+                            //if (Vector3.Dot(leadingEdgeToPt, leadEdge) > 0)
+                            //    Debug.Log("Positive side on leading edge");
+                            //if (Vector3.Dot(trailingEdgeToPt, trailEdge) > 0)
+                            //    Debug.Log("Positive side on trailing edge");
+
+                            if (sector.checkPointInsideSector(transform.position))
+                            {
+                                currentSector = modularTrack.name;
+                                Debug.Log("Current Sector is " + modularTrack.name);
+                            }
+                        }
+                        else if (modularTrack.name == "Sector5" || modularTrack.name == "Sector9" || modularTrack.name == "Sector19" || modularTrack.name == "Sector23")
+                        {
+                            sector.frontLeftCorner = sector.corners[9];
+                            sector.frontRightCorner = sector.corners[16];
+                            sector.backLeftCorner = sector.corners[5];
+                            sector.backRightCorner = sector.corners[14];                            
+                            if (sector.checkPointInsideSector(transform.position))
+                            {
+                                currentSector = modularTrack.name;
+                                Debug.Log("Current Sector is " + modularTrack.name);
+                            }                           
+                        }
+                        else if (modularTrack.name == "Sector6" || modularTrack.name == "Sector10" || modularTrack.name == "Sector20" || modularTrack.name == "Sector24")
+                        {                            
+                            sector.frontLeftCorner = sector.corners[5];
+                            sector.frontRightCorner = sector.corners[9];
+                            sector.backLeftCorner = sector.corners[14];
+                            sector.backRightCorner = sector.corners[16];
+                            if (sector.checkPointInsideSector(transform.position))
+                            {
+                                currentSector = modularTrack.name;
+                                Debug.Log("Current Sector is " + modularTrack.name);
+                            }
+                           // Debug.DrawLine(sector.corners[16], sector.corners[16] + Vector3.up * 5.0f, Color.white);
+                        }
+                        else if (modularTrack.name == "Sector7" || modularTrack.name == "Sector11" || modularTrack.name == "Sector21" || modularTrack.name == "Sector25")
+                        {
+                            sector.frontLeftCorner = sector.corners[9];
+                            sector.frontRightCorner = sector.corners[16];
+                            sector.backLeftCorner = sector.corners[5];
+                            sector.backRightCorner = sector.corners[14];
+                            if (sector.checkPointInsideSector(transform.position))
+                            {
+                                currentSector = modularTrack.name;
+                                Debug.Log("Current Sector is " + modularTrack.name);
+                            }
+                            Debug.DrawLine(sector.corners[5], sector.corners[5] + Vector3.up * 3);
+                        }
+                        else if (Vector3.Dot(pointOnRightEdgeToKart, normOfRightEdge) > 0 &&
+                                Vector3.Dot(pointOnLeftEdgeToKart, normOfLeftEdge) > 0 &&
+                                Vector3.Dot(leadingEdgeToPt, normalOfLeadingEdge) > 0 &&
+                                Vector3.Dot(trailingEdgeToPt, normalOfTrailingEdge) > 0)                           
+                        {
+                            currentSector = modularTrack.name;
+                            Debug.Log("Current Sector is " + modularTrack.name);
+                                                                       
+                        }
+                      //  }
+                        //Vector3 normalOfLeftEdge = Vector3.Project(pointOnTrailEdgeToKart, pointOnTrailingEdge);
+                        //Vector3 normalOfRightEdge = Vector3.Project(pointOnLeadingEdgeToKart, pointOnLeadingEdge);
+
+                        //midVector = (sector.corners[12 + 1] - sector.corners[12]);
+                        //halfLength = midVector.magnitude / 2;
+                        //midVector = sector.corners[12] + halfLength * midVector.normalized;
+                        ////Debug.DrawLine(sector.corners[12], midVector, Color.white);
+                        ////Debug.DrawLine(midVector, midVector + normalOfTrailingEdge, Color.magenta);
+
+                        //float distFromLeadingEdgeToKart = Vector3.Dot(leadingEdgeToPt, normalOfLeadingEdge);
+                        //float distFromTrailingEdgeToKart = Vector3.Dot(trailingEdgeToPt, normalOfTrailingEdge);
+                        ////float distFromLeftEdgeToKart = Vector3.Dot(
+                        //float totalDistAlongTheSector = distFromLeadingEdgeToKart + distFromTrailingEdgeToKart;
+
+                        //float distance = distFromLeadingEdgeToKart / totalDistAlongTheSector;
+                        //if (distance >=0 && distance <=1)
+                        //{ 
+                        //    //Debug.Log("distance: " + distance + " in " + modularTrack.name);
+                        //  //  break;
+                        //}
                     }
+                   
                     //Sector sector = child.FindChild("Sector");
                     //child.FindChild("Sector");
                     //Something(child.gameObject);
                 }
             }
+        }
+
+        float Clamp(float steer, float min, float max)
+        {
+            if (steer < min)
+                steer = min;
+            else if (steer > max)
+                steer = max;
+            return steer;
+        }
+
+        float SteerToTarget(Vector3 dest)
+        {
+            Vector3 DestForward, cp;
+
+            DestForward = dest - transform.position;
+            DestForward.y = 0.0f;
+            DestForward.Normalize();
+
+            // Compute the sine between current & destination
+            cp = Vector3.Cross(transform.forward, DestForward);            
+            float steer = cp.magnitude * m_FinalStats.Steer;
+
+            // Steer left or right ?
+            if (cp.y < 0.0f) { steer = -steer; }
+            steer = Clamp(steer,-1.0f, 1.0f);
+            return steer;
         }
 
         Vector3 normalOfOneFace(Vector3 point, Vector3 cornerA, Vector3 cornerB, ref Vector3 v)
@@ -346,6 +614,7 @@ namespace KartGame.KartSystems
             a = a.normalized;
             Vector3 projOfBonA = Vector3.Project(b, a); // vector to the point on the line directly under point
             Vector3 normal = point - projOfBonA;
+            
             return normal;
         }
 
@@ -422,11 +691,54 @@ namespace KartGame.KartSystems
             // apply vehicle physics
             if (m_CanMove)
             {
+                float steer;
                 bool accel = true; // UnityEngine.Input.GetAxis("Accelerate") > 0 ? true : false;
                 bool brake = false;// UnityEngine.Input.GetAxis("Brake") > 0 ? true : false;
-                //accel = Input.Accelerate || accel;
-                //brake = Input.Brake || brake;
-                MoveVehicle(accel, brake, 0);// Input.TurnInput);
+                                   //accel = Input.Accelerate || accel;
+                                   //brake = Input.Brake || brake;
+                bool nextSectorFound = false;
+                foreach (Transform child in ovalTrack)
+                {
+                    //Debug.Log("name: " + transform.name + " pos: " + transform.position);
+                    Vector3 firstSector = Vector3.zero;
+                  
+                    foreach (Transform modularTrack in child)
+                    {
+
+                        if (!modularTrack.name.StartsWith("Sector"))
+                            continue;
+                        //if (modularTrack.name != currentSector)
+                        //    continue;
+
+                        if (nextSectorFound)
+                        {
+                            Debug.DrawLine(transform.position, modularTrack.transform.position, Color.white);
+                            steer = SteerToTarget(modularTrack.transform.position);
+                            MoveVehicle(accel, brake, steer);// Input.TurnInput);
+                            nextSectorFound = false;
+                            break;
+                        }
+                        else if (modularTrack.name == currentSector)
+                        {
+                            nextSectorFound = true;                            
+                            if (modularTrack.name == "Sector28")
+                            {
+                                firstSector = pSector.transform.position;
+                                Debug.DrawLine(transform.position, firstSector, Color.white);
+                                if (firstSector!=null)
+                                { 
+                                    steer = SteerToTarget(firstSector);
+                                    MoveVehicle(accel, brake, steer);// Input.TurnInput);
+                                    nextSectorFound = false;
+                                }
+                            }
+                        }
+                    }
+                    //if (nextSectorFound)
+                    //{                        
+                    //    break;
+                    //}
+                }
                 //MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
                 //MoveVehicle(UnityEngine.Input.GetAxis("Accelerate"), Input.Brake, Input.TurnInput);
             }

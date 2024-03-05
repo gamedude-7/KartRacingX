@@ -6,10 +6,18 @@ public class Sector : MonoBehaviour
 {
     Mesh mesh;
     Vector3[] vertices;
-    Vector3[] normals = new Vector3[4];
+    public Vector3[] normals;
     float sectorDist;
     float totalPriorDist;
-    public Vector3[] corners;    
+    public Vector3[] corners;
+    public Vector3 backLeftCorner;
+    public Vector3 backRightCorner;
+    public Vector3 frontLeftCorner;
+    public Vector3 frontRightCorner;
+
+    public Vector3 leftEdge,rightEdge,trailEdge,leadEdge;
+    public Vector3 normOfLeftEdge, normOfRightEdge, normOfTrailEdge, normOfLeadEdge;
+
 
     //public Bounds bounds;
     // Start is called before the first frame update
@@ -17,7 +25,8 @@ public class Sector : MonoBehaviour
     {        
         mesh = GetComponent<MeshFilter>().mesh;        
         vertices = mesh.vertices;
-        
+        corners = new Vector3[24];
+        normals = new Vector3[24];
         int index = 0;
         //Debug.Log("name: " + name + " count: " + mesh.normals.Length);
         //foreach (Vector3 norm in mesh.normals)
@@ -27,9 +36,9 @@ public class Sector : MonoBehaviour
         //}
         
         int j = 0; int n = 0;
-        corners = new Vector3[24];
+        
         bool found = false;
-        corners[j] = new Vector3(0.0f, 0.0f, 0.0f);
+        //corners[j] = new Vector3(0.0f, 0.0f, 0.0f);
         //corners[j] = Vector3.up;
         //corners[j] = vertices[0];
         // float min_y = minY(vertices);
@@ -44,7 +53,7 @@ public class Sector : MonoBehaviour
             //if (vertices[i].y < (min_y + 0.01f) && vertices[i].y > (min_y - 0.01f))
             //if (vertices[i].y < 0)
             //{
-                // Debug.Log("vertex " + i + ": " + vertices[i]);
+                 Debug.Log("vertex " + i + ": " + vertices[i]);
 
 
                 //for (int a = 0; a < n; a++)
@@ -86,6 +95,51 @@ public class Sector : MonoBehaviour
             //}
         }
         //Debug.Log("corners: " + corners);
+    }
+
+    public void setEdgeNorms()
+    {
+        leftEdge = frontLeftCorner - backLeftCorner;
+        rightEdge = frontRightCorner - backRightCorner;
+        trailEdge = frontRightCorner - frontLeftCorner;
+        leadEdge = backRightCorner - backLeftCorner;
+
+        Vector3 halfLeftEdge = leftEdge / 2.0f;
+        Vector3 halfRightEdge = rightEdge / 2.0f;
+        Vector3 halfTrailEdge = trailEdge / 2.0f;
+        Vector3 halfLeadEdge = leadEdge / 2.0f;
+        normOfLeftEdge = (Quaternion.AngleAxis(90, Vector3.up) * halfLeftEdge).normalized;
+        normOfRightEdge = (Quaternion.AngleAxis(-90, Vector3.up) * halfRightEdge).normalized;
+        normOfTrailEdge = (Quaternion.AngleAxis(90, Vector3.up) * halfTrailEdge).normalized;
+        normOfLeadEdge = (Quaternion.AngleAxis(-90, Vector3.up) * halfLeadEdge).normalized;
+
+        //Debug.DrawLine(backLeftCorner, frontLeftCorner, Color.red);
+        Debug.DrawLine(backLeftCorner + halfLeftEdge, backLeftCorner + halfLeftEdge + normOfLeftEdge, Color.red);
+        Debug.DrawLine(backRightCorner + halfRightEdge, backRightCorner + halfRightEdge + normOfRightEdge, Color.yellow);
+        Debug.DrawLine(frontLeftCorner + halfTrailEdge, frontLeftCorner + halfTrailEdge + normOfTrailEdge, Color.blue);
+        Debug.DrawLine(backLeftCorner + halfLeadEdge, backLeftCorner + halfLeadEdge + normOfLeadEdge, Color.green);
+    }
+
+    public bool checkPointInsideSector(Vector3 pointOfInterest)
+    {
+        setEdgeNorms();
+        Vector3 pointOnLeadingEdge = backLeftCorner;
+        Vector3 pointOnTrailingEdge = frontRightCorner;
+        Vector3 pointOnLeftEdge = frontLeftCorner;
+        Vector3 pointOnRightEdge = backRightCorner;
+        Vector3 leadingEdgeToPt = pointOfInterest - pointOnLeadingEdge;
+        Vector3 trailingEdgeToPt = pointOfInterest - pointOnTrailingEdge;
+        Vector3 pointOnLeftEdgeToPt = pointOfInterest - pointOnLeftEdge;
+        Vector3 pointOnRightEdgeToPt = pointOfInterest - pointOnRightEdge;
+        if (Vector3.Dot(pointOnRightEdgeToPt, normOfRightEdge) > 0 &&
+                               Vector3.Dot(pointOnLeftEdgeToPt, normOfLeftEdge) > 0 &&
+                               Vector3.Dot(leadingEdgeToPt, normOfLeadEdge) > 0 &&
+                               Vector3.Dot(trailingEdgeToPt, normOfTrailEdge) > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public static Vector3 TransformVertex( Vector3 position, Quaternion rotation, Vector3 scale)

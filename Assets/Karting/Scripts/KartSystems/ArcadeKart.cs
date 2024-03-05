@@ -366,6 +366,8 @@ namespace KartGame.KartSystems
                 bool brake = UnityEngine.Input.GetAxis("Brake") > 0 ? true : false;
                 accel = Input.Accelerate || accel;
                 brake = Input.Brake || brake;
+                //if (Input.TurnInput!=0)
+                //    Debug.Log("turn input: " + Input.TurnInput);
                 MoveVehicle(accel, brake, Input.TurnInput);
                 //MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
                 //MoveVehicle(UnityEngine.Input.GetAxis("Accelerate"), Input.Brake, Input.TurnInput);
